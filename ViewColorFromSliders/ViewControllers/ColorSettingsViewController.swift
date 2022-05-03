@@ -23,18 +23,18 @@ class ColorSettingsViewController: UIViewController {
     @IBOutlet weak var blueSlider: UISlider!
     
     var delegate: ColorSettingsViewControllerDelegate!
+    var mainVCColor: UIColor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        refreshLabels(redSlider.value, greenSlider.value, blueSlider.value)
-        
+        setMainVCColors()
+        refreshLabelsAndTF(redSlider.value, greenSlider.value, blueSlider.value)
         setColorView()
     }
     
     @IBAction func changeSlidersValue(_ sender: UISlider) {
         setColorView()
-        refreshLabels(redSlider.value, greenSlider.value, blueSlider.value)
+        refreshLabelsAndTF(redSlider.value, greenSlider.value, blueSlider.value)
     }
     
     @IBAction func doneButton() {
@@ -43,15 +43,26 @@ class ColorSettingsViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    func setMainVCColors() {
+        let ciColor = CIColor(color: mainVCColor)
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
+    }
+    
     func setColorView() {
         colorfulView.backgroundColor = UIColor(red: CGFloat(redSlider.value),
                                                green: CGFloat(greenSlider.value),
                                                blue: CGFloat(blueSlider.value),
                                                alpha: 1)
     }
-    func refreshLabels(_ red: Float, _ green: Float, _ blue: Float) {
+    func refreshLabelsAndTF(_ red: Float, _ green: Float, _ blue: Float) {
         redValueLabel.text = String(format: "%.2f", red)
         greenValueLabel.text = String(format: "%.2f", green)
         blueValueLabel.text = String(format: "%.2f", blue)
+        
+        redValueTF.text = String(format: "%.2f", red)
+        greenValueTF.text = String(format: "%.2f", green)
+        blueValueTF.text = String(format: "%.2f", blue)
     }
 }
