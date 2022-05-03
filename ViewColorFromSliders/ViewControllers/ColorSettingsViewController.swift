@@ -7,12 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ColorSettingsViewController: UIViewController {
     @IBOutlet weak var colorfulView: UIView!
     
     @IBOutlet weak var redValueLabel: UILabel!
     @IBOutlet weak var greenValueLabel: UILabel!
     @IBOutlet weak var blueValueLabel: UILabel!
+    
+    @IBOutlet weak var redValueTF: UITextField!
+    @IBOutlet weak var greenValueTF: UITextField!
+    @IBOutlet weak var blueValueTF: UITextField!
     
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
