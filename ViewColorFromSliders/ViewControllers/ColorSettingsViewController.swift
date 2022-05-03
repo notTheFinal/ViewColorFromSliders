@@ -22,6 +22,8 @@ class ColorSettingsViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
+    var delegate: ColorSettingsViewControllerDelegate!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,6 +35,12 @@ class ColorSettingsViewController: UIViewController {
     @IBAction func changeSlidersValue(_ sender: UISlider) {
         setColorView()
         refreshLabels(redSlider.value, greenSlider.value, blueSlider.value)
+    }
+    
+    @IBAction func doneButton() {
+        guard let viewColor = colorfulView.backgroundColor else { return }
+        delegate.setNewVCColor(for: viewColor)
+        dismiss(animated: true)
     }
     
     func setColorView() {
