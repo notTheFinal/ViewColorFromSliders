@@ -14,9 +14,15 @@ class ColorSettingsViewController: UIViewController {
     @IBOutlet weak var greenValueLabel: UILabel!
     @IBOutlet weak var blueValueLabel: UILabel!
     
-    @IBOutlet weak var redValueTF: UITextField!
-    @IBOutlet weak var greenValueTF: UITextField!
-    @IBOutlet weak var blueValueTF: UITextField!
+    @IBOutlet weak var redValueTF: UITextField! {
+        didSet { redValueTF?.addDoneToolbar() }
+    }
+    @IBOutlet weak var greenValueTF: UITextField! {
+        didSet { greenValueTF?.addDoneToolbar() }
+    }
+    @IBOutlet weak var blueValueTF: UITextField! {
+        didSet { blueValueTF?.addDoneToolbar() }
+    }
     
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
@@ -30,6 +36,15 @@ class ColorSettingsViewController: UIViewController {
         setMainVCColors()
         refreshLabelsAndTF(redSlider.value, greenSlider.value, blueSlider.value)
         setColorView()
+        
+        redValueTF.delegate = self
+        greenValueTF.delegate = self
+        blueValueTF.delegate = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     @IBAction func changeSlidersValue(_ sender: UISlider) {
@@ -64,5 +79,44 @@ class ColorSettingsViewController: UIViewController {
         redValueTF.text = String(format: "%.2f", red)
         greenValueTF.text = String(format: "%.2f", green)
         blueValueTF.text = String(format: "%.2f", blue)
+    }
+
+}
+
+extension ColorSettingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let textFromTF = textField.text else { return }
+        guard let numberFromTF = Float(textFromTF) else { return }
+        
+        if textField == redValueTF {
+            redSlider.value = numberFromTF
+            changeSlidersValue(redSlider)
+        } else if textField == greenValueTF {
+            greenSlider.value = numberFromTF
+            changeSlidersValue(greenSlider)
+        } else if textField == blueValueTF {
+            blueSlider.value = numberFromTF
+            changeSlidersValue(blueSlider)
+        }
+    }
+}
+
+extension UITextField {
+    func addDoneToolbar(onDone: (target: Any, action: Selector)? = nil) {
+        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
+
+        let toolbar: UIToolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
+        ]
+        toolbar.sizeToFit()
+
+        self.inputAccessoryView = toolbar
+    }
+    
+    @objc func doneButtonTapped() {
+        self.resignFirstResponder()
     }
 }

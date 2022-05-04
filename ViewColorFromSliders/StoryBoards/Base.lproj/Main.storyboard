@@ -110,7 +110,7 @@
                                                     <action selector="changeSlidersValue:" destination="cME-kS-8e4" eventType="valueChanged" id="LHE-oi-8pD"/>
                                                 </connections>
                                             </slider>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-n9-W4T">
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyB-n9-W4T">
                                                 <rect key="frame" x="228.5" y="0.0" width="51.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -145,7 +145,7 @@
                                                     <action selector="changeSlidersValue:" destination="cME-kS-8e4" eventType="valueChanged" id="5gu-g9-ZVv"/>
                                                 </connections>
                                             </slider>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZ2-pg-b0L">
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cZ2-pg-b0L">
                                                 <rect key="frame" x="228.5" y="0.0" width="51.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -162,7 +162,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kfe-yF-0OR">
-                                <rect key="frame" x="113.5" y="461" width="93.5" height="50"/>
+                                <rect key="frame" x="113.5" y="458" width="93.5" height="50"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Done">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
@@ -178,7 +178,7 @@
                             <constraint firstItem="xYg-lp-ZQ2" firstAttribute="top" secondItem="vGH-oJ-TPC" secondAttribute="top" constant="5" id="0H8-9k-Pak"/>
                             <constraint firstItem="xYg-lp-ZQ2" firstAttribute="leading" secondItem="vGH-oJ-TPC" secondAttribute="leading" constant="20" id="0JR-mn-NaT"/>
                             <constraint firstItem="fXM-13-mNi" firstAttribute="top" secondItem="xYg-lp-ZQ2" secondAttribute="bottom" constant="65" id="1Oa-gK-V7f"/>
-                            <constraint firstItem="vGH-oJ-TPC" firstAttribute="bottom" secondItem="Kfe-yF-0OR" secondAttribute="bottom" constant="57" id="6Xt-Ng-KzO"/>
+                            <constraint firstItem="vGH-oJ-TPC" firstAttribute="bottom" secondItem="Kfe-yF-0OR" secondAttribute="bottom" constant="60" id="6Xt-Ng-KzO"/>
                             <constraint firstItem="Kfe-yF-0OR" firstAttribute="centerX" secondItem="PEo-bj-Kvz" secondAttribute="centerX" id="9tf-CS-7yq"/>
                             <constraint firstItem="xYg-lp-ZQ2" firstAttribute="height" secondItem="PEo-bj-Kvz" secondAttribute="height" multiplier="0.194384" id="AFc-dj-wIy"/>
                             <constraint firstItem="vGH-oJ-TPC" firstAttribute="trailing" secondItem="xYg-lp-ZQ2" secondAttribute="trailing" constant="20" id="IFe-hf-LOP"/>
