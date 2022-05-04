@@ -89,13 +89,13 @@ extension ColorSettingsViewController: UITextFieldDelegate {
         guard let numberFromTF = Float(textFromTF) else { return }
         
         if textField == redValueTF {
-            redSlider.value = numberFromTF
+            redSlider.setValue(numberFromTF, animated: true)
             changeSlidersValue(redSlider)
         } else if textField == greenValueTF {
-            greenSlider.value = numberFromTF
+            greenSlider.setValue(numberFromTF, animated: true)
             changeSlidersValue(greenSlider)
         } else if textField == blueValueTF {
-            blueSlider.value = numberFromTF
+            blueSlider.setValue(numberFromTF, animated: true)
             changeSlidersValue(blueSlider)
         }
     }
