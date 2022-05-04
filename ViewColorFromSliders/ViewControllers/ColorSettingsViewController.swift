@@ -86,7 +86,13 @@ class ColorSettingsViewController: UIViewController {
 extension ColorSettingsViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let textFromTF = textField.text else { return }
-        guard let numberFromTF = Float(textFromTF) else { return }
+        guard let numberFromTF = Float(textFromTF) else {
+            let alert = UIAlertController(title: "Внимание!", message: "Введите верное значение цвета от 0 до 1", preferredStyle: .alert)
+            let okBtn = UIAlertAction(title: "ОК", style: .default, handler: nil)
+            alert.addAction(okBtn)
+            present(alert, animated: true)
+            return
+        }
         
         if textField == redValueTF {
             redSlider.setValue(numberFromTF, animated: true)
